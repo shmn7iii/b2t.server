@@ -11,7 +11,7 @@ $ docker compose up -d
 # ログが見たい
 $ docker compose logs -f
 
-# 初回のみ。IDB終わったかな〜を見計らって（終わってなくてもいいかも
+# 初回のみ
 $ docker compose exec bitcoind bitcoin-cli -signet -rpcuser=hoge -rpcpassword=hoge createwallet default
 ```
 
