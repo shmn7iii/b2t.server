@@ -1,6 +1,6 @@
 services:
   bitcoind:
-    image: ruimarinho/bitcoin-core:22-alpine
+    image: ruimarinho/bitcoin-core:22
     volumes:
       - ./config/bitcoin.conf:/home/bitcoin/.bitcoin/bitcoin.conf
       - bitcoin_data:/home/bitcoin/.bitcoin
