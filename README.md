@@ -8,11 +8,11 @@ BTC to TPC server.
 $ docker compose build
 $ docker compose up -d
 
-# ログが見たい
-$ docker compose logs -f
-
 # 初回のみ
 $ docker compose exec bitcoind bitcoin-cli -signet -rpcuser=hoge -rpcpassword=hoge createwallet default
+
+# ログが見たい
+$ docker compose logs -f
 ```
 
 ## usage
