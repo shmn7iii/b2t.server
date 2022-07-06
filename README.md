@@ -18,3 +18,6 @@ $ docker compose logs -f
 ## usage
 
 localhost:8910 に向けて色々投げる、専用クライアント駆動を想定
+
+- ヘルスチェック  
+  http://localhost:4567/health
