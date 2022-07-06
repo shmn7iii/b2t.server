@@ -24,3 +24,7 @@ end
 get '/' do
   'Hi there! :)'
 end
+
+get '/health' do
+  health = { bitcoin: bitcoinRPC.getblockchaininfo, tapyrus: tapyrusRPC.getblockchaininfo }.to_json
+end
