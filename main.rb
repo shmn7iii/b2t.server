@@ -65,3 +65,26 @@ rescue RuntimeError => e
   retry
 end
 
+get '/b2t/execute' do
+  # bitcoinRPC.loadwallet('default')
+  payment_txid = params['payment_txid']
+  receipt_address = params['receipt_address']
+  amount = params['amount']
+
+  # 本当はここで payment_tx が正当かどうか検証したい
+
+  # 本当はここでもらったTXIDから読み取ってamount取得〜とかしたかったけど、
+  # 対象TXがサーバーサイドでまだ確認できなくてエラーとか起こってどうしようもない
+  # listunspentも未取り込みTXは出てこないし
+
+  # payment_tx の送付額を取得
+  # payment_tx = bitcoinRPC.getrawtransaction(payment_txid, true)
+  # amount = payment_tx['vout'][vout]['value']
+
+  # # 同額のTPCを送付
+  # # 本当はガバナンストークンがいいけどとりあえずTPC
+  receipt_txid = tapyrusRPC.sendtoaddress(receipt_address, amount)
+
+  # # 返却
+  receipt_txid
+end
