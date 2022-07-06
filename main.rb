@@ -26,7 +26,19 @@ get '/' do
 end
 
 get '/health' do
-  health = { bitcoin: bitcoinRPC.getblockchaininfo, tapyrus: tapyrusRPC.getblockchaininfo }.to_json
+  data = {
+    bitcoin: {
+      chain: bitcoinRPC.getblockchaininfo['chain'],
+      blockcount: bitcoinRPC.getblockcount
+    },
+    tapyrus: {
+      chain: tapyrusRPC.getblockchaininfo['chain'],
+      blockcount: tapyrusRPC.getblockcount
+    }
+  }
+  json data
+end
+
 end
 
 get '/b2t/getnewaddress' do
