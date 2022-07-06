@@ -1,6 +1,6 @@
 require 'sinatra'
-require 'json'
-require 'net/http'
+require 'sinatra/reloader' if development?
+require 'sinatra/json'
 require 'bitcoin'
 require 'tapyrus'
 
@@ -8,7 +8,7 @@ Bitcoin.chain_params = :signet
 Tapyrus.chain_params = :prod
 
 def bitcoinRPC
-  bitcoin_rpc_config = { schema: 'http', host: 'bitcoind', port: 38332, user: 'hoge', password: 'hoge' }
+  bitcoin_rpc_config = { schema: 'http', host: 'bitcoind', port: 38_332, user: 'hoge', password: 'hoge' }
   Bitcoin::RPC::BitcoinCoreClient.new(bitcoin_rpc_config)
 end
 
