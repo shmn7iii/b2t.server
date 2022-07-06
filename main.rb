@@ -28,3 +28,12 @@ end
 get '/health' do
   health = { bitcoin: bitcoinRPC.getblockchaininfo, tapyrus: tapyrusRPC.getblockchaininfo }.to_json
 end
+
+get '/b2t/getnewaddress' do
+  bitcoinRPC.getnewaddress
+rescue RuntimeError => e
+  bitcoinRPC.loadwallet('default')
+  # 読み込みは一回しかしちゃだめ
+  retry
+end
+
