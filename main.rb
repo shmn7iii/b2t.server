@@ -22,7 +22,7 @@ configure do
 end
 
 get '/' do
-  'Hi there! :)'
+  "Hi there! I'm server :)"
 end
 
 get '/health' do
@@ -39,9 +39,25 @@ get '/health' do
   json data
 end
 
+get '/b2t/listunspent' do
+  data = {
+    bitcoin: bitcoinRPC.listunspent,
+    tapyrus: tapyrusRPC.listunspent
+  }
+  json data
 end
 
-get '/b2t/getnewaddress' do
+get '/b2t/bitcoin/getrawtransaction' do
+  data = bitcoinRPC.getrawtransaction(params['txid'], true)
+  json data
+end
+
+get '/b2t/tapyrus/getrawtransaction' do
+  data = tapyrusRPC.getrawtransaction(params['txid'], true)
+  json data
+end
+
+get '/b2t/bitcoin/getnewaddress' do
   bitcoinRPC.getnewaddress
 rescue RuntimeError => e
   bitcoinRPC.loadwallet('default')
