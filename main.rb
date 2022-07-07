@@ -61,8 +61,11 @@ get '/b2t/bitcoin/getnewaddress' do
   bitcoinRPC.getnewaddress
 rescue RuntimeError => e
   bitcoinRPC.loadwallet('default')
-  # 読み込みは一回しかしちゃだめ
   retry
+end
+
+get '/b2t/tapyrus/getnewaddress' do
+  tapyrusRPC.getnewaddress
 end
 
 get '/b2t/execute' do
