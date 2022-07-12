@@ -72,7 +72,5 @@ get '/b2t/execute' do
   payment_txid = params['payment_txid']
   receipt_address = params['receipt_address']
   amount = params['amount']
-  receipt_txid = tapyrusRPC.sendtoaddress(receipt_address, amount)
-
-  receipt_txid
+  tapyrusRPC.sendtoaddress(receipt_address, amount)
 end
