@@ -47,16 +47,6 @@ get '/b2t/listunspent' do
   json data
 end
 
-get '/b2t/bitcoin/getrawtransaction' do
-  data = bitcoinRPC.getrawtransaction(params['txid'], true)
-  json data
-end
-
-get '/b2t/tapyrus/getrawtransaction' do
-  data = tapyrusRPC.getrawtransaction(params['txid'], true)
-  json data
-end
-
 get '/b2t/bitcoin/getnewaddress' do
   bitcoinRPC.getnewaddress
 rescue RuntimeError => e
